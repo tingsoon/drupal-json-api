@@ -1,0 +1,5 @@
+name: 'Test API'
+type: module
+description: 'To test API call can be displayed in a form a not'
+core: 8.x
+package: 'TestAPI'

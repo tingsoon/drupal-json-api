@@ -1,0 +1,16 @@
+testapi.testapiform:
+  path: '/testapiform'
+  defaults:
+    _form: '\Drupal\testapi\Form\TestApiForm'
+    _title: 'Test API Form'
+  requirements:
+    _access: 'TRUE'
+
+testapi.testapicontroller:
+  path: '/testcontroller'
+  defaults:
+    _controller: '\Drupal\testapi\Controller\TestController::build'
+#    _content: '\Drupal\testapi\Controller\TestController::build'
+    _title: 'Test API Controller'
+  requirements:
+    _access: 'TRUE'
