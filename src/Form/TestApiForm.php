@@ -35,7 +35,8 @@ class TestApiForm extends FormBase {
     $rows = [];
     foreach($data as $key => $value) {
       // set delete URL
-      $delete_url = '<a href="some-endpoint/'.$value->id.'" class="use-ajax" >Delete URL</a>';
+//      $delete_url = '<a href="https://jsonplaceholder.typicode.com/todos/'.$value->id.'" class="use-ajax" >Delete URL</a>';
+      $delete_url = '<a href="/testapideleteform/'.$value->id.'" >Delete URL</a>';
 
       $rows[$key]['UserID'] = t(strval($value->userId));
       $rows[$key]['ID'] = t(strval($value->id));

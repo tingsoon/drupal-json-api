@@ -10,7 +10,14 @@ testapi.testapicontroller:
   path: '/testcontroller'
   defaults:
     _controller: '\Drupal\testapi\Controller\TestController::build'
-#    _content: '\Drupal\testapi\Controller\TestController::build'
     _title: 'Test API Controller'
+  requirements:
+    _access: 'TRUE'
+
+testapi.testapideleteform:
+  path: '/testapideleteform/{id}'
+  defaults:
+    _form: '\Drupal\testapi\Form\TestApiDeleteForm'
+    _title: 'Test API Delete Form'
   requirements:
     _access: 'TRUE'
