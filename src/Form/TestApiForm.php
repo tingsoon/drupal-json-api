@@ -50,7 +50,19 @@ class TestApiForm extends FormBase {
 
     $build['table']['#rows'] = $rows;
 
+    $build['actions']['Add New ID'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Add New ID'),
+      '#submit' => array([$this, 'redirectAdd']),
+    ];
+
     return $build;
+  }
+
+  public function redirectAdd(array &$form, FormStateInterface $form_state) {
+    // return to main form
+    // TODO: add new form for add ID
+    $form_state->setRedirect('testapi.testapiform');
   }
 
   public function getFormId()

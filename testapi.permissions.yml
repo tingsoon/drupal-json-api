@@ -1,0 +1,4 @@
+##Define the administer permission for TestAPI config entity
+#'administer testapi settings':
+#  title: 'Administer testAPI Settings'
+#  description: Adminster contents relating to TestAPI sites

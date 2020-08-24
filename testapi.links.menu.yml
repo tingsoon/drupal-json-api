@@ -1,0 +1,13 @@
+#testapi.admin_config_testapi:
+#  title: 'TestAPI'
+#  description: 'TestAPI Configuration'
+#  route_name: testapi.testcontroller
+#  parent: system.admin_config
+#
+#testapi.test_dashboard_form:
+#  title: 'TestAPI dashboard'
+#  description: 'Page to go to testAPI dashboard'
+#  route_name: testapi.testapiform
+#  parent: testapi.admin_config_testapi
+#  menu_name: testapi
+#  weight: 1

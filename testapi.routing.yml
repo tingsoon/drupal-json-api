@@ -5,6 +5,7 @@ testapi.testapiform:
     _title: 'Test API Form'
   requirements:
     _access: 'TRUE'
+#    _admin_route: TRUE
 
 testapi.testapicontroller:
   path: '/testcontroller'
@@ -21,3 +22,4 @@ testapi.testapideleteform:
     _title: 'Test API Delete Form'
   requirements:
     _access: 'TRUE'
+    name: '[0-9]+'
