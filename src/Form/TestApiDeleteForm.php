@@ -82,7 +82,7 @@ class TestApiDeleteForm extends FormBase {
       $statusCodeDelete = $responseDelete->getStatusCode();
       drupal_set_message(t('Status Code %statusCodeDelete ', ['%statusCodeDelete' => $statusCodeDelete]));
     } catch (RequestException $e) {
-      return new Response($e->getMessage());
+      drupal_set_message($e->getMessage(), 'error');
     }
 
     if ($statusCodeDelete == '200') {

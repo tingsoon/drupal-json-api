@@ -4,6 +4,8 @@ namespace Drupal\testapi\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use GuzzleHttp\Exception\RequestException;
+use Symfony\Component\HttpFoundation\Response;
 
 class TestApiAddForm extends FormBase {
 
@@ -52,6 +54,48 @@ class TestApiAddForm extends FormBase {
   }
 
   public function redirectDashboard(array &$form, FormStateInterface $form_state, $id = null) {
+    // return to main form
+    $form_state->setRedirect('testapi.testapiform');
+  }
+
+  public function addID(array &$form, FormStateInterface $form_state, $id = null) {
+    // Adding post request to API
+    $newUserId = $form_state->getValue('userId_add');
+    $newId = $form_state->getValue('id_add');
+    $newTitle = $form_state->getValue('title_add');
+
+//    drupal_set_message($newUserId);
+//    drupal_set_message($newId);
+//    drupal_set_message($newTitle);
+
+    $body = array(
+      "userId" => $newUserId,
+      "id" => $newId,
+      "title" => $newTitle,
+      "completed" => false,
+    );
+
+//    drupal_set_message(json_encode($body));
+
+    $clientAdd = \Drupal::httpClient();
+    $addUrl = 'https://jsonplaceholder.typicode.com/todos/';
+
+    try {
+      $responseAdd = $clientAdd->post($addUrl, $body);
+      $statusCodeAdd = $responseAdd->getStatusCode();
+    } catch (RequestException $e) {
+//      return new Response($e->getMessage());
+      drupal_set_message($e->getMessage(), 'error');
+    }
+
+    drupal_set_message($statusCodeAdd);
+
+    if ($statusCodeAdd == '201') {
+      drupal_set_message(t('ID %id is Added.', ['%id' => $newId]));
+    } else {
+      drupal_set_message(t('Status Code is NOT 201. Refer to error logs.'), 'error');
+    }
+
     // return to main form
     $form_state->setRedirect('testapi.testapiform');
   }
