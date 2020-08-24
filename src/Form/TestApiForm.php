@@ -25,7 +25,7 @@ class TestApiForm extends FormBase {
     $build['table'] = [
       '#type' => 'table',
       '#caption' => $this->t('Our favorite colors.'),
-      '#header' => [t('UserID'), t('ID'), t('Title'), t('Delete')],
+      '#header' => [t('UserID'), t('ID'), t('Title'), t('')],
 //      '#rows' => [
 //        [$this->t(strval($data->userId)), $this->t(strval($data->id)), $this->t($data->title)],
 //      ],
@@ -36,7 +36,8 @@ class TestApiForm extends FormBase {
     foreach($data as $key => $value) {
       // set delete URL
 //      $delete_url = '<a href="https://jsonplaceholder.typicode.com/todos/'.$value->id.'" class="use-ajax" >Delete URL</a>';
-      $delete_url = '<a href="/testapideleteform/'.$value->id.'" >Delete URL</a>';
+//      $delete_url = '<a href="/testapideleteform/'.$value->id.'" >Delete URL</a>';
+      $delete_url = '<a class="button" href="/testapideleteform/'.$value->id.'" >Delete</a>';
 
       $rows[$key]['UserID'] = t(strval($value->userId));
       $rows[$key]['ID'] = t(strval($value->id));
@@ -61,7 +62,6 @@ class TestApiForm extends FormBase {
 
   public function redirectAdd(array &$form, FormStateInterface $form_state) {
     // return to main form
-    // TODO: add new form for add ID
     $form_state->setRedirect('testapi.testapiaddform');
   }
 
