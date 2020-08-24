@@ -62,7 +62,7 @@ class TestApiForm extends FormBase {
   public function redirectAdd(array &$form, FormStateInterface $form_state) {
     // return to main form
     // TODO: add new form for add ID
-    $form_state->setRedirect('testapi.testapiform');
+    $form_state->setRedirect('testapi.testapiaddform');
   }
 
   public function getFormId()

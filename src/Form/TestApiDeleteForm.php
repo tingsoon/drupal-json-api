@@ -18,37 +18,30 @@ class TestApiDeleteForm extends FormBase {
     $data = json_decode($response);
 
     // TODO: Implement buildForm() method.
-    $form['description'] = [
+    $form['description_delete'] = [
       '#type' => 'item',
       '#markup' => $this->t('Are you sure you want to delete ID : %id ?', ['%id' => $id]),
     ];
 
-    $form['userId'] = [
+    $form['userId_del'] = [
       '#type' => 'textfield',
       '#default_value' => $this->t(strval($data->userId)),
       '#title' => $this->t('User ID'),
       '#disabled' => TRUE,
     ];
 
-    $form['id'] = [
+    $form['id_del'] = [
       '#type' => 'textfield',
       '#default_value' => $this->t(strval($data->id)),
       '#title' => $this->t('ID'),
       '#disabled' => TRUE,
     ];
 
-    $form['title'] = [
+    $form['title_del'] = [
       '#type' => 'textfield',
       '#default_value' => $this->t($data->title),
       '#title' => $this->t('Title'),
       '#disabled' => TRUE,
-    ];
-
-    // Group submit handlers in an actions element with a key of "actions" so
-    // that it gets styled correctly, and so that other modules may add actions
-    // to the form. This is not required, but is convention.
-    $form['actions'] = [
-      '#type' => 'actions',
     ];
 
     // Add a submit button that handles the submission of the form.

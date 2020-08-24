@@ -23,3 +23,11 @@ testapi.testapideleteform:
   requirements:
     _access: 'TRUE'
     name: '[0-9]+'
+
+testapi.testapiaddform:
+  path: '/testapiaddform/new'
+  defaults:
+    _form: '\Drupal\testapi\Form\TestApiAddForm'
+    _title: 'Test API Add Form'
+  requirements:
+    _access: 'TRUE'
