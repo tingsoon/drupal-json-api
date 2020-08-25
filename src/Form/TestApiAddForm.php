@@ -22,7 +22,7 @@ class TestApiAddForm extends FormBase {
     ];
 
     $form['userId_add'] = [
-      '#type' => 'textfield',
+      '#type' => 'number',
       '#title' => $this->t('User ID'),
     ];
 
@@ -51,6 +51,25 @@ class TestApiAddForm extends FormBase {
     ];
 
     return $form;
+  }
+
+  // Adding custom validations
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $form_userId = $form_state->getValue('userId_add');
+    $form_id = $form_state->getValue('id_add');
+    $form_title = $form_state->getValue('title_add');
+    $continue = TRUE;
+
+    if ($form_userId < 0) {
+      $form_state->setErrorByName('userId_add', $this->t('Must be numeric and value > 0.'));
+      $continue = FALSE;
+    }
+
+    if (!preg_match("/[A-Z][0-9]/",$form_id) && !empty($form_id)) {
+      $form_state->setErrorByName('id_add', $this->t('Must be at least one Uppercase letter followed by at least one number.'));
+      $continue = FALSE;
+    }
+
   }
 
   public function redirectDashboard(array &$form, FormStateInterface $form_state, $id = null) {
